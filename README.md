@@ -39,7 +39,7 @@ Crear contenedor
 ```bash
 docker run -dp 8000:8000 gateway
 ```
-Luego ingresar a la url http://localhost:8000
+Luego ingresar a la url http://localhost:8000/swagger/index.html
 ## Authors
 
 - [@kcornejo](https://www.github.com/kcornejo)
