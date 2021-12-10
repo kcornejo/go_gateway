@@ -1,0 +1,142 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/search/{search}": {
+            "get": {
+                "description": "Get movies, songs, tv shows and people for search",
+                "consumes": [
+                    "text/plain"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "search"
+                ],
+                "summary": "Get items for search",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "value to search",
+                        "name": "search",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.JsonResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.JsonResponse": {
+            "type": "object",
+            "properties": {
+                "movies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Movie"
+                    }
+                },
+                "person": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Person"
+                    }
+                },
+                "songs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Song"
+                    }
+                },
+                "tvShow": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.TvShow"
+                    }
+                }
+            }
+        },
+        "models.Movie": {
+            "type": "object",
+            "properties": {
+                "artistName": {
+                    "type": "string"
+                },
+                "trackName": {
+                    "type": "string"
+                },
+                "trackPrice": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.Person": {
+            "type": "object",
+            "properties": {
+                "dob": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ssn": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Song": {
+            "type": "object",
+            "properties": {
+                "artistName": {
+                    "type": "string"
+                },
+                "trackName": {
+                    "type": "string"
+                },
+                "trackPrice": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.TvShow": {
+            "type": "object",
+            "properties": {
+                "ended": {
+                    "type": "string"
+                },
+                "genres": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "premiered": {
+                    "type": "string"
+                },
+                "scoreMatch": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,91 @@
+definitions:
+  models.JsonResponse:
+    properties:
+      movies:
+        items:
+          $ref: '#/definitions/models.Movie'
+        type: array
+      person:
+        items:
+          $ref: '#/definitions/models.Person'
+        type: array
+      songs:
+        items:
+          $ref: '#/definitions/models.Song'
+        type: array
+      tvShow:
+        items:
+          $ref: '#/definitions/models.TvShow'
+        type: array
+    type: object
+  models.Movie:
+    properties:
+      artistName:
+        type: string
+      trackName:
+        type: string
+      trackPrice:
+        type: number
+    type: object
+  models.Person:
+    properties:
+      dob:
+        type: string
+      name:
+        type: string
+      ssn:
+        type: string
+    type: object
+  models.Song:
+    properties:
+      artistName:
+        type: string
+      trackName:
+        type: string
+      trackPrice:
+        type: number
+    type: object
+  models.TvShow:
+    properties:
+      ended:
+        type: string
+      genres:
+        type: string
+      id:
+        type: integer
+      language:
+        type: string
+      name:
+        type: string
+      premiered:
+        type: string
+      scoreMatch:
+        type: number
+      status:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /search/{search}:
+    get:
+      consumes:
+      - text/plain
+      description: Get movies, songs, tv shows and people for search
+      parameters:
+      - description: value to search
+        in: query
+        name: search
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.JsonResponse'
+      summary: Get items for search
+      tags:
+      - search
+swagger: "2.0"
